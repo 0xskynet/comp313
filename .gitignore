@@ -1,0 +1,13 @@
+Client/nbproject/private/
+Client/build/
+Client/nbbuild/
+Client/dist/
+Client/nbdist/
+Client/.nb-gradle/
+
+Server/nbproject/private/
+Server/build/
+Server/nbbuild/
+Server/dist/
+Server/nbdist/
+Server/.nb-gradle/

@@ -1,0 +1,50 @@
+Mar 08, 2013 11:09:51 PM org.netbeans.updater.UpdaterFrame <clinit>
+INFO: Entering updater.jar .................................................................... 
+Mar 08, 2013 11:09:53 PM org.netbeans.updater.ModuleUpdater deleteInstallLater
+INFO: File F:\Project\Client\update\download\install_later.xml deleted.
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: Copied file netbeans/modules/locale/org-netbeans-modules-javafx2-scenebuilder_ja.jar to F:\Project\Client\modules\locale\org-netbeans-modules-javafx2-scenebuilder_ja.jar
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: Copied file netbeans/modules/locale/org-netbeans-modules-javafx2-scenebuilder_pt_BR.jar to F:\Project\Client\modules\locale\org-netbeans-modules-javafx2-scenebuilder_pt_BR.jar
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: Copied file netbeans/modules/locale/org-netbeans-modules-javafx2-scenebuilder_ru.jar to F:\Project\Client\modules\locale\org-netbeans-modules-javafx2-scenebuilder_ru.jar
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: Copied file netbeans/modules/locale/org-netbeans-modules-javafx2-scenebuilder_zh_CN.jar to F:\Project\Client\modules\locale\org-netbeans-modules-javafx2-scenebuilder_zh_CN.jar
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: Copied file netbeans/config/Modules/org-netbeans-modules-javafx2-scenebuilder.xml to F:\Project\Client\config\Modules\org-netbeans-modules-javafx2-scenebuilder.xml
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: Copied file netbeans/modules/org-netbeans-modules-javafx2-scenebuilder.jar.pack.gz to F:\Project\Client\modules\org-netbeans-modules-javafx2-scenebuilder.jar.pack.gz
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack200
+INFO: Unpack F:\Project\Client\modules\org-netbeans-modules-javafx2-scenebuilder.jar.pack.gz to F:\Project\Client\modules\org-netbeans-modules-javafx2-scenebuilder.jar
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: File F:\Project\Client\modules\org-netbeans-modules-javafx2-scenebuilder.jar.pack.gz deleted.
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: File F:\Project\Client\update\download\org-netbeans-modules-javafx2-scenebuilder.nbm deleted.
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.XMLUtil write
+INFO: Use XML Transformer: com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl@35a881f5
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.UpdateTracking$Module write
+INFO: File F:\Project\Client\update_tracking\org-netbeans-modules-javafx2-scenebuilder.xml modified.
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: Copied file netbeans/modules/locale/org-netbeans-modules-bugtracking_ja.jar to F:\Project\Client\modules\locale\org-netbeans-modules-bugtracking_ja.jar
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: Copied file netbeans/modules/locale/org-netbeans-modules-bugtracking_pt_BR.jar to F:\Project\Client\modules\locale\org-netbeans-modules-bugtracking_pt_BR.jar
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: Copied file netbeans/modules/locale/org-netbeans-modules-bugtracking_ru.jar to F:\Project\Client\modules\locale\org-netbeans-modules-bugtracking_ru.jar
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: Copied file netbeans/modules/locale/org-netbeans-modules-bugtracking_zh_CN.jar to F:\Project\Client\modules\locale\org-netbeans-modules-bugtracking_zh_CN.jar
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: Copied file netbeans/config/Modules/org-netbeans-modules-bugtracking.xml to F:\Project\Client\config\Modules\org-netbeans-modules-bugtracking.xml
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: Copied file netbeans/modules/org-netbeans-modules-bugtracking.jar.pack.gz to F:\Project\Client\modules\org-netbeans-modules-bugtracking.jar.pack.gz
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack200
+INFO: Unpack F:\Project\Client\modules\org-netbeans-modules-bugtracking.jar.pack.gz to F:\Project\Client\modules\org-netbeans-modules-bugtracking.jar
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: File F:\Project\Client\modules\org-netbeans-modules-bugtracking.jar.pack.gz deleted.
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.ModuleUpdater unpack
+INFO: File F:\Project\Client\update\download\org-netbeans-modules-bugtracking.nbm deleted.
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.XMLUtil write
+INFO: Use XML Transformer: com.sun.org.apache.xalan.internal.xsltc.trax.TransformerImpl@34de727a
+Mar 08, 2013 11:09:54 PM org.netbeans.updater.UpdateTracking$Module write
+INFO: File F:\Project\Client\update_tracking\org-netbeans-modules-bugtracking.xml modified.
+Mar 08, 2013 11:09:58 PM org.netbeans.updater.ModuleUpdater deleteAdditionalInfo
+INFO: File F:\Project\Client\update\download\additional_information.xml deleted.

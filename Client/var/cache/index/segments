@@ -1,0 +1,19 @@
+#Thu Mar 14 02:05:09 IST 2013
+s5=jar\:file\:/C\:/Program%20Files/Java/jdk1.7.0_02/jre/lib/jce.jar\!/
+s4=jar\:file\:/C\:/Program%20Files/Java/jdk1.7.0_02/jre/lib/jsse.jar\!/
+s3=jar\:file\:/C\:/Program%20Files/Java/jdk1.7.0_02/jre/lib/sunrsasign.jar\!/
+s2=jar\:file\:/C\:/Program%20Files/Java/jdk1.7.0_02/jre/lib/rt.jar\!/
+s18=file\:/F\:/Project/Client/build/generated-sources/ap-source-output/
+s1=jar\:file\:/C\:/Program%20Files/Java/jdk1.7.0_02/jre/lib/resources.jar\!/
+s17=file\:/F\:/Project/Client/test/
+s16=jar\:file\:/C\:/Program%20Files/Java/jdk1.7.0_02/src.zip\!/
+s15=jar\:file\:/C\:/Program%20Files/NetBeans%207.2.1/ide/jsstubs/allstubs.zip\!/
+s14=file\:/F\:/Project/Client/src/
+s13=jar\:file\:/C\:/Program%20Files/Java/jdk1.7.0_02/jre/lib/ext/zipfs.jar\!/
+s12=jar\:file\:/C\:/Program%20Files/Java/jdk1.7.0_02/jre/lib/ext/sunmscapi.jar\!/
+s11=jar\:file\:/C\:/Program%20Files/Java/jdk1.7.0_02/jre/lib/ext/sunjce_provider.jar\!/
+s10=jar\:file\:/C\:/Program%20Files/Java/jdk1.7.0_02/jre/lib/ext/sunec.jar\!/
+s9=jar\:file\:/C\:/Program%20Files/Java/jdk1.7.0_02/jre/lib/ext/localedata.jar\!/
+s8=jar\:file\:/C\:/Program%20Files/Java/jdk1.7.0_02/jre/lib/ext/dnsns.jar\!/
+s7=file\:/C\:/Program%20Files/Java/jdk1.7.0_02/jre/classes/
+s6=jar\:file\:/C\:/Program%20Files/Java/jdk1.7.0_02/jre/lib/charsets.jar\!/

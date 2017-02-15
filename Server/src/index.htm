@@ -1,0 +1,463 @@
+<html>
+<head>
+<title> Client Application </title>
+<style type="text/css">
+body { background-color:#dccab9; }
+#main{ width:700px; height:405px; }
+#tbpnl { height:28px; }
+.tab { height:24px; padding:0 4px 0 4px;  margin:0 2px 0 0px; float:left; cursor:pointer; background-color:#AE946F; padding:2px; 	-moz-border-radius: 3px 3px 0 0;	-webkit-border-radius: 3px 3px 0 0 ;	-khtml-border-radius: 3px 3px 0 0;	border-radius: 3px 3px 0 0; }
+.active { background-color:	#DCCAB9; border-left:solid 1px #000; border-top:solid 1px #000; border-right:solid 1px #000;  }
+#pgpanel { width:696px; height:392px; border:solid 1px #000; padding:3px; }
+.page { width:100%; height:100%;  } .console { width:440px; color:#FFF; font-weight:bold; background-color:#000; }
+.chthist {width:440px; } .chtbox {width:440px; }
+</style>
+</head>
+
+<body style="" onLoad="initialize();">
+<div id="main">
+	<div id="tbpnl">
+    	<div class="tab" id="tab0" onClick="changetab('page0',0);" >File Explorer</div>
+        <div class="tab" id="tab1" onClick="changetab('page1',1);" >Remote Shell</div>
+        <div class="tab" id="tab2" onClick="changetab('page2',2);"  >Messaging</div>
+        <div class="tab" id="tab3" onClick="changetab('page3',3);"  >Server Info</div>
+	</div>
+    <div id="pgpanel">
+    	<div class="page" id="page1" >
+        	<div style="margin-bottom:5px;">
+			<input type="button" value="Reload" id="reload" onClick="reloader();"/>
+            <select name="drive" id="drive" onChange="listdrive(this);" ></select>
+            <input type="button" value="<<Back" onClick="goback();" />
+            <input type="text" id="curdir" style="width:502px;" />
+            </div>
+            <select size=21 name="folders" onDblClick="changedir(this);" onclick="deselectlist('files'); getselected('folders');" style="width:340px; float:left; margin-right:10px;" id="folders"></select>
+            <select size=21 name="files" onclick="deselectlist('folders'); getselected('files');"  style="width:340px; float:left;"  id="files"> </select>
+
+            <div style="margin-top:5px;">
+            <input type="button" id="refresh" onClick="refreshdir();" value="Refresh" />
+            <input type="button" id="opn" onClick="opn();" value="Open" />
+            <input type="button" id="del" onClick="ffdelete();" value="Delete" />
+            <input type="button" id="ren" onClick="rename();" value="Rename" />
+            <input type="button" id="cut" onClick="copy(true);" value="Cut" />
+            <input type="button" id="copy" onClick="copy(false);" value="Copy" />
+            <input type="button" id="paste" onClick="paste();" value="Paste" />
+            <input type="button" id="new" onClick="NewFolder();" value="New Folder" />
+			<input type="button" id="properties" onClick="getproperties();" value="Properties" />
+            </div>
+        </div>
+    	<div class="page" id="page1" >
+            <div style="float:left; margin-right:5px;">
+            Process List : <br>
+            	<select style="width:250px;" size="21" name="proc" id="proc" >
+                                            
+                </select>
+                <br> <input type="button" value="Refresh" onClick="initask();" name="refp" id="refp" />
+                <input type="button" onClick="taskkill();" value="Kill" name="killp" id="killp" />
+            </div>
+            <div style="float:left; width:200px;">
+            	Remote Shell : <br>
+                <input type="text" class="console" id="consoleip" /><br>
+                <textarea readonly spellcheck="false" type="text" class="console" id="consoleop" style="height:320px; font-weight:normal;" ></textarea>
+                <br> <input type="button" onClick=" document.getElementById('consoleop').value = ''; " value="Clear" />	
+            </div>
+            
+        </div>
+    	<div class="page" id="page1" >
+
+
+		<div style="float:left; margin-right:5px;">
+            Message : <br>
+            <form id="msgtypegrp" action="" >
+            	<div style="float:left; width:120px;">
+                <input type="radio" id="raderr" class="msgtype" name="msgtype" value="ERR"> Error <br>
+                <input type="radio" checked="checked" class="msgtype" id="radinf" name="msgtype" value="INF"> Information <br>
+                <input type="radio" id="radwar" class="msgtype" name="msgtype" value="WAR"> Warning <br>
+                </div>
+                <div style="float:right; width:120px;">
+                <input type="radio" id="radquest" class="msgtype" name="msgtype" value="QUE"> Question <br>
+                <input type="radio" id="radpln" class="msgtype" name="msgtype" value="PLN"> Plain Message <br>
+                </div>
+            </form> <br><br><br><br>
+            <input type="text" style="width:245px; height:25px;" id="msgtitle" value="Message Title" /> <br><br>
+            <textarea readonly spellcheck="false"  style="width:245px; height:120px;" id="msgbody" >Message Body</textarea> <br>
+            <input type="button" value="Send Msg" onClick="sendMsg();" />
+        </div>
+        <div style="float:left; width:200px;">
+            Chat : <br>
+            <textarea id="chthistory" type="text" class="chthist" style="height:320px; font-weight:normal;" ></textarea>
+            <input id="chtmsg" type="text" class="chtbox" /><br>
+        </div>
+		
+
+
+        </div>
+    	<div class="page" id="page1" >
+        	<div id="infpnl" style="float:left; padding:5px 0 5px 8px; width:420px; overflow-y: auto; height:380px; background-color:#999;">
+            Server Info.
+            </div>
+        	<div style="float:left; margin-left:20px;">
+            <br><br>
+            	<input type="button" value="Shutdown" id="shutdown" onClick="shutdown('s');" />
+                <input type="button" value="Restart" id="Restart" onClick="shutdown('r');" />
+                <input type="button" value="Abort" id="abort" onClick="shutdown('a');" /> <br><br>
+                After : <input type="text" style="width:50px;" id="hh" />
+                <input type="text" style="width:50px;" id="mm" />
+                <input type="text" style="width:50px;" id="ss" /> time
+                
+                
+            </div>
+        </div>
+    </div>
+</div> 
+<script type="text/javascript">
+var container, pages, numpages, tabs,ip,port=8889,url,fcopy="",fcut="",iscut = false ;
+function initialize() {
+ip = document.location.host; url = "http://" + ip + ":" + port + "/";
+	container = document.getElementById("pgpanel");
+	tbcontainer = document.getElementById("tbpnl");
+	pages = container.querySelectorAll(".page");
+	tabs = tbcontainer.querySelectorAll(".tab");
+	numpages = pages.length;
+	showtab(0);
+	reloader();
+	initask();
+	getsysteminfo();
+	setTimeout(pollmsg, 2000);
+}
+document.getElementById('chtmsg').onkeypress = function(e){
+	if (!e) e = window.event;
+	var keyCode = e.keyCode || e.which;
+	if (keyCode == '13'){
+		var valchat = document.getElementById('chtmsg') ;
+		if((valchat.value).trim() != "") {
+			send("MSG|CHT|"+valchat.value);
+			document.getElementById('chthistory').value += "You    :"+ valchat.value + '\n';
+			valchat.value = "";
+		}
+	return false;
+	}
+}
+document.getElementById('consoleip').onkeypress = function(e){
+	if (!e) e = window.event;
+	var keyCode = e.keyCode || e.which;
+	if (keyCode == '13') {
+		var consip = document.getElementById('consoleip');
+		if((consip.value).trim() != ""){
+			send("ALN|CMD|" + consip.value );
+			document.getElementById('consoleop').value += ">>"+ consip.value + '\n';
+			consip.value = "";
+		}
+	}
+}
+function getsysteminfo() {
+send('TSK|INF|Z');
+}
+function getmsgtype() {
+var inputype = document.getElementById('msgtypegrp');
+var inputs = inputype.querySelectorAll(".msgtype");
+for (var i = 0; i < inputs.length; i++) {
+  if (inputs[i].checked) {
+	return inputs[i].value;
+  }
+}
+}
+function sendMsg() {
+	var chtype = getmsgtype(); var chttitle = document.getElementById('msgtitle').value; var chtbody = document.getElementById('msgbody').value;
+	send("MSG|MSG|" + chttitle + "|" + chtbody + "|" + chtype);
+}
+function initask() {
+	send('TSK|LST|z');
+}
+function reloader() {
+	send('FTP|DRV|LST|z');
+}
+function changedir(thiss) {
+	send('FTP|DIR|' + document.getElementById('curdir').value + thiss.options[thiss.selectedIndex].value );
+	document.getElementById('curdir').value += thiss.options[thiss.selectedIndex].value;
+}
+function refreshdir() {
+	send('FTP|DIR|' + document.getElementById('curdir').value);
+}
+function goback() {
+	var curvalue = document.getElementById('curdir');
+	if((curvalue.value).length > 3) {
+	curvalue.value = (curvalue.value).substring(0,(curvalue.value).length-1);
+	curvalue.value = (curvalue.value).substring(0,(curvalue.value).lastIndexOf("/")+1);
+	send('FTP|DIR|' + curvalue.value );
+	}
+}
+function listdrive(thiss) {
+	send('FTP|DIR|'+ thiss.options[thiss.selectedIndex].value); 
+	document.getElementById('curdir').value = thiss.options[thiss.selectedIndex].value;
+	}
+function changetab (tab,no) {
+	var curtab = document.getElementById(tab); showtab(no);
+}
+function showtab(no) {
+	for(i=0;i<numpages;i++)
+	{ 
+		if(i != no) { 			pages[i].style.display = "none"; 			tabs[i].setAttribute("class","tab"); 		}
+		if(i == no) {			pages[i].style.display = "block"; 			tabs[i].setAttribute("class","tab active"); }
+	}
+}
+function atol1(lst) {
+	var list1 = document.getElementById("folders"); var list2 = document.getElementById("files");
+	list1.innerHTML = ""; list2.innerHTML = "";
+	for(i=2;i<lst.length-1;i++)
+	{ fl = lst[i];
+	if(fl.charAt( fl.length-1 ) == "/" ) 	list1.innerHTML += "<option class=\"fl\" value=\""+ fl +"\" >"+fl+"</option>";
+	else 	list2.innerHTML += "<option class=\"fl\" value=\""+ fl +"\" >"+fl+"</option>";
+	}
+}
+function addtodrv (lst) {
+	var list1 = document.getElementById("drive");
+	list1.innerHTML = "";
+	for(i=2;i<lst.length-1;i++)
+	{ 
+		fl = lst[i];
+		console.log(fl);
+		list1.innerHTML += "<option value=\""+ fl +"\" >"+fl+"</option>";
+	}
+	send("FTP|DIR|" +	document.getElementById('drive').value);
+	document.getElementById("curdir").value = document.getElementById('drive').value ;
+}
+function deselectlist(list) {
+	var lst = document.getElementById(list); 	var len = lst.querySelectorAll("option").length;
+	for (var i = 0; i < len; i++)  lst[i].selected = false;
+}
+function getselected() {
+	var list1 = document.getElementById("folders"); var list2 = document.getElementById("files");
+	if(list1.selectedIndex != -1) 		return list1[list1.selectedIndex].text;
+	if(list2.selectedIndex != -1) 		return list2[list2.selectedIndex].text; 	return "";
+}
+function makeHttpObject() {
+  try {return new XMLHttpRequest();}
+  catch (error) {}
+  try {return new ActiveXObject("Msxml2.XMLHTTP");}
+  catch (error) {}
+  try {return new ActiveXObject("Microsoft.XMLHTTP");}
+  catch (error) {}
+  throw new Error("Could not create HTTP request object.");
+}
+function send(str) {
+	str = decodeURI(str);
+	console.log(str);
+  var request = makeHttpObject();
+  request.open("GET", str, true);
+  request.send(null);
+  request.onreadystatechange = function() {
+    if (request.readyState == 4) {
+      if (request.status == 200)
+        getdata(request.responseText);
+      else 
+        console.log(request.status, request.statusText);
+    }
+  };
+}
+
+function FTP(parts) {
+	switch(parts[1]) {
+		case 'DRV' : addtodrv(parts);  break;
+		case 'DIR' : atol1(parts); break;
+		case 'REF' : refreshdir(); break;
+		case 'PRO' : properties(parts); break;
+	}
+}
+function getproperties() {
+	var curdir = document.getElementById('curdir').value ;
+	var ffname = getselected();
+	if(ffname.trim() != "") {
+		send('FTP|PRO|' + curdir + ffname);
+	}
+}
+function  properties(s) {
+	var text="";
+	var ftitle = s[2];
+	var creationTime = s[3];
+	var lastAccessTime = s[4];
+	var lastModifiedTime = s[5];
+	
+	var isDirectory = s[6];
+	var isOther = s[7];
+	var isRegularFile = s[8];
+	var isSymbolicLink = s[9];
+	var size = s[10];
+                
+	text +=	"Name : " + ftitle + "\n" +
+			 "created Time : " + creationTime + "\n" +
+			"Last Accessed : " + lastAccessTime + "\n" +
+			"Last Modified : " + lastModifiedTime + "\n" +
+			"is Directory : " +isDirectory + "\n" +
+			"is Other File : " +isOther + "\n" +
+			"is Regular File : " +isRegularFile + "\n" +
+			"is Symbolic Link : " +isSymbolicLink + "\n" +
+			"File Size : " + size;
+	alert(text);
+}
+function copy(iscutted) {
+	var sel = getselected();
+	if(sel != "") {
+		fcopy = document.getElementById('curdir').value + sel;
+		if(iscutted == true)  
+			iscut = true;
+		else
+			iscut = false;
+	}
+}
+function paste() {
+	if(fcopy != "") {
+		var pasteto = document.getElementById('curdir').value;
+		if(fcopy.substr(fcopy.length-1) == "/")  {
+			var newn = (fcopy.substring(0,fcopy.length-1));
+			var tonew = fcopy.substring(newn.lastIndexOf("/")+1,newn.length);
+			//send('FTP|CPD|');
+			if(iscut == false) {
+				send('FTP|CPD|' + fcopy + "|" + pasteto + tonew + "/");
+			}
+			else{
+				send('FTP|MVD|' + fcopy + "|" + pasteto + tonew + "/");
+				iscut = false;
+				fcopy = "";
+			}
+		}
+		else  {
+			var tonew = fcopy.substring(fcopy.lastIndexOf("/")+1,fcopy.length);
+			if(iscut == false ) {
+				send('FTP|CPF|' +fcopy + "|" + pasteto + tonew);
+			}
+			else {
+				send('FTP|MVF|' +fcopy + "|" + pasteto + tonew);
+				iscut = false;
+				fcopy = "";
+			}
+		}
+	}
+}
+function movdir() {
+	if(fcut != "") {
+		var pasteto = document.getElementById('curdir').value;
+		fcut = "";
+		if(fcut.substr(fcut.length-1) == "/")  {
+			var newn = (fcut.substring(0,fcut.length-1));
+			var tonew = fcut.substring(newn.lastIndexOf("/")+1,newn.length);
+			//send('FTP|CPD|');
+			send('FTP|MVD|' + fcut + "|" + pasteto + tonew + "/");
+		}
+		else  {
+			var tonew = fcut.substring(fcut.lastIndexOf("/")+1,fcut.length);
+			send('FTP|MVF|' +fcut + "|" + pasteto + tonew);
+		}
+	}
+}
+function rename(){
+	var ffname = getselected();
+	if(ffname.trim() != "") {
+		var fname=prompt("Rename File/Folder "+ ffname +  "\nEnter New File/Folder Name");
+		if (fname!=null && fname!=""){
+			var oldname = document.getElementById('curdir').value + ffname;
+			var newname = document.getElementById('curdir').value + fname
+			send("FTP|REN|" + oldname + "|" + newname);
+		} 
+	}
+}
+function opn(){
+	var ffname = getselected();
+	var curdir = document.getElementById('curdir').value;
+	if(ffname.trim() != "") {
+		if(ffname.substring(ffname.length-1) == "/"){
+			send('FTP|DIR|' + curdir + ffname);
+			document.getElementById('curdir').value += ffname;
+		}
+		else {
+			send('TSK|OPN|' + curdir + ffname);
+		}
+	}
+}
+function ffdelete(){
+	var ffname = getselected();
+	if(ffname.trim() != "") {
+		var fname=confirm("Delete File/Folder "+ ffname +  "\nAre You Sure ?");
+		if (fname == true){
+			var filename = document.getElementById('curdir').value + ffname;
+			send("FTP|DEL|" + filename);
+		} 
+	}
+}
+function NewFolder() {
+		var curd = document.getElementById('curdir').value;
+		var newf=prompt("Enter Name of the Folder : ");
+		if (newf!=null && newf!=""){
+			send("FTP|MKD|" + curd + newf);
+		} 
+}
+function TSK(parts) {
+	switch(parts[1]) {
+		case 'LST' : addtoproc(parts);  break;
+		case 'DIR' : atol1(parts); break;
+		case 'INF' : sysinfo(parts); break;
+	}
+}
+function sysinfo(parts) {
+	var infdiv = document.getElementById('infpnl');
+	for(var i=2;i<parts.length;i++){
+		infdiv.innerHTML += parts[i] + '<br>' ;
+	}
+}
+function shutdown(types) {
+	
+	if(types == "a") {send("TSK|ABT|A"); return; }
+	var hh = document.getElementById('hh').value; var mm = document.getElementById('mm').value; var ss = document.getElementById('ss').value;
+	if(types == "s") {send("TSK|SHT|S|" + hh + "|" + mm + "|" + ss );  }
+	if(types == "r") {send("TSK|SHT|R|" + hh + "|" + mm + "|" + ss ); }
+}
+function MSG(parts) {
+	switch(parts[1]) {
+		case 'MSG' : addToMsg(parts[2]);  break;
+		case 'CHT' : addToMsg(parts[2]);  break;
+	}
+}
+function addToMsg(msg) {
+	document.getElementById('chthistory').value += "Server    :"+ msg;
+}
+function ALN(parts) {
+	switch(parts[1]){
+		case 'CMD' : 
+		{
+			var cmdOutput = "";
+			for(i=2;i<parts.length;i++)
+			{
+				cmdOutput += parts[i] + "\n";
+			}
+			document.getElementById('consoleop').value += cmdOutput;
+			break;
+		 	
+		}
+		
+	}
+}
+function addtoproc(lst) {
+	var list3 = document.getElementById('proc');
+	list3.innerHTML = "";
+	for(i=2;i<lst.length-1;i++)
+	{ 
+		fl = lst[i];
+		list3.innerHTML += "<option value=\""+ fl +"\" >"+fl+"</option>";
+	}	
+}
+function taskkill() {
+var list1 = document.getElementById("proc"); var selval  = list1[list1.selectedIndex].text;
+	if(list1.selectedIndex != -1) {
+		send("TSK|KIL|" +  selval.substring( selval.indexOf(":")+1,selval.length));
+		list1.remove(list1.selectedIndex);
+	}
+}
+function getdata(str) {
+	var parts=str.split("|"); 	
+	if(parts[0] == "FTP") FTP(parts); 	if(parts[0] == "TSK") TSK(parts); 	if(parts[0] == "ALN") ALN(parts); if(parts[0] == "MSG") MSG(parts);
+}
+var pollmsg = function () {
+	send("POL|MSG|z");
+   setTimeout(pollmsg, 2500);
+};
+</script>
+</body>
+</html>

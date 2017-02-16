@@ -26,10 +26,10 @@ Our main motivation to create the project was TeamViewer. Our aim was to develop
 
 Credits
 
-Bhaveshkumar Gangani 
-Krushnakumarsinh Vaghela 
-Deep Marvania
-Aamir Nawab 
+Bhaveshkumar Gangani ,
+Krushnakumarsinh Vaghela ,
+Deep Marvania,
+Aamir Nawab ,
 Jaspreet Minhas 
 
 License

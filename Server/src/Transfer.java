@@ -57,7 +57,6 @@ public class Transfer {
 	}.start();
 
     }
-
     
    private void transferData(InputStream in, OutputStream out) throws IOException  {
         isTransferring = true;

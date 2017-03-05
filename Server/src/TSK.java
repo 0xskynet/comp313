@@ -11,7 +11,7 @@ public class TSK {
             switch(s[1]) {
             case "LST" :
             {
-                 send =  "TSK|LST|" +listprocess() ;
+                 send =  "TSK|LST|" + listprocess() ;
             } break;
             case "KIL" :
             {

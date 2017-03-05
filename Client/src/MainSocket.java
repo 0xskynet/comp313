@@ -4,6 +4,7 @@ import java.net.*;
 import java.util.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import javax.swing.SwingUtilities;
 
 public class MainSocket {
@@ -38,6 +39,22 @@ NewJFrame gui;
             first = parts[0];
         } catch (Exception e) {
         }
+        
+        if(first.equals("GEN")) { // General 
+            switch(parts[1]) {
+                case "ATH" : {
+                    if("ACC".equals(parts[2]) && !"".equals(parts[2])) {
+                        // pin correct
+                        gui.enableControls();
+                    } else {
+                        // pin incorrect
+                        gui.disableControls();
+                        JOptionPane.showMessageDialog(null, "Incorrect Pin.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                } break;
+            }
+        }
+        
         if(first.equals("ACK")) {
             if("CON1".equals(parts[1])) {
                 senddata("FTP|DRV|z");

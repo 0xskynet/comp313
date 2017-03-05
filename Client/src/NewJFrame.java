@@ -25,6 +25,7 @@ public class NewJFrame extends javax.swing.JFrame {
     boolean iscut = true;
     ArrayList<String> cmdhistory = new ArrayList<>();
     int cmdhistoryindex = 0;
+    public String generatedPin = "";
     public NewJFrame() {
         initComponents();
     }
@@ -891,13 +892,19 @@ public class NewJFrame extends javax.swing.JFrame {
             ClientA A = new ClientA();
            try {
                A.setUpNetworking(jTextField1.getText().toString());
+               String pin = JOptionPane.showInputDialog("Please input pin.");
+               generatedPin = pin;
+               MainSocket.senddata("GEN|ATH|" + pin);
            } catch (Exception ex) {
-               JOptionPane.showMessageDialog(null, "Unable to connect the host / Host unavailable.", "Error", JOptionPane.ERROR_MESSAGE);
+               JOptionPane.showMessageDialog(null, "Unable to connect the host (Host unavailable)", "Error", JOptionPane.ERROR_MESSAGE);
                // Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, ex);
            }
         }
        else {
-            System.out.println("Disconnected");
+            String pin = JOptionPane.showInputDialog("Please input pin.");
+            generatedPin = pin;
+            MainSocket.senddata("GEN|ATH|" + pin);
+            // System.out.println("Already Connected");
         }
     }//GEN-LAST:event_btnconnectMouseClicked
 

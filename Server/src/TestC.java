@@ -2,6 +2,7 @@ import java.io.*;
 import java.net.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 class TestC {
     static PrintWriter writer;
@@ -75,6 +76,19 @@ class TestC {
             try {
                 first = parts[0];
             } catch (Exception e) {
+            }
+            if(first.equals("GEN")) { // General 
+                switch(parts[1]) {
+                    case "ATH" : {
+                        if(gui.generatedPin.equals(parts[2]) && !"".equals(parts[2])) {
+                            // pin correct
+                            send("GEN|ATH|ACC");
+                        } else {
+                            // pin incorrect
+                            send("GEN|ATH|REJ");
+                        }
+                    } break;
+                }
             }
             if(first.equals("FTP")) {
                 send(ftp.handler(parts));  

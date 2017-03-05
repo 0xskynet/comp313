@@ -892,7 +892,7 @@ public class NewJFrame extends javax.swing.JFrame {
             ClientA A = new ClientA();
            try {
                A.setUpNetworking(jTextField1.getText().toString());
-               String pin = JOptionPane.showInputDialog("Please input pin.");
+               String pin = JOptionPane.showInputDialog("Please enter pin.");
                generatedPin = pin;
                MainSocket.senddata("GEN|ATH|" + pin);
            } catch (Exception ex) {
@@ -901,7 +901,7 @@ public class NewJFrame extends javax.swing.JFrame {
            }
         }
        else {
-            String pin = JOptionPane.showInputDialog("Please input pin.");
+            String pin = JOptionPane.showInputDialog("Please enter pin.");
             generatedPin = pin;
             MainSocket.senddata("GEN|ATH|" + pin);
             // System.out.println("Already Connected");

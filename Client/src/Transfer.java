@@ -6,9 +6,10 @@ public class Transfer {
     InputStream in;
     OutputStream out;
     Socket socket;
-    Transfer() throws UnknownHostException, IOException{
+    Transfer(String ip) throws UnknownHostException, IOException{
+        initNetwork(ip);
     }
-    
+
     public  void sendFile(String sfileName) throws IOException{
         try{
             System.out.println("File output Stream of : " + sfileName);

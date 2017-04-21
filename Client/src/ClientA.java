@@ -9,7 +9,7 @@ ServerSocket server;
 Socket client;
 static NewJFrame gui;
 static Transfer transfer;
-public static final String serverIp = "192.168.100.1"; //192.168.137.131
+public static final String serverIp = "127.0.0.1"; //192.168.137.131
 public static int httpPort	= 7889; //  7889    // 8889
 public static int mainPort	= 7888; //  7888    // 8888
 public static int transferPort	= 7887; //  7887    // 8887
@@ -57,7 +57,7 @@ public static int transferPort	= 7887; //  7887    // 8887
 
     public void setUpNetworking(String ip) throws UnknownHostException, IOException, Exception {
         MainSocket MainSocket1 = new MainSocket(ip,gui);
-        transfer = new Transfer();
+        transfer = new Transfer(ip);
     }
 
 }

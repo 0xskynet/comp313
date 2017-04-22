@@ -61,7 +61,7 @@ public class FTP {
             case "TSF" :
             {
                 System.out.println("In the CODEEEEEEEEEEEE");
-                server.transfer.initNetwork();
+                //server.transfer.initNetwork();
                 send = "FTP|TSF|z";
             } break;
             case "DNL" :
@@ -110,8 +110,8 @@ public class FTP {
         String lastAccessTime= attr.lastAccessTime().toString();
         String lastModifiedTime= attr.lastModifiedTime().toString();
 
-         String isDirectory= (new Boolean( attr.isDirectory())).toString();
-        String isOther= (new Boolean( attr.isOther())).toString();
+        String isDirectory= (new Boolean( attr.isDirectory())).toString();
+        String isOther = (new Boolean( attr.isOther())).toString();
         String isRegularFile= (new Boolean( attr.isRegularFile())).toString();
         String isSymbolicLink= (new Boolean( attr.isSymbolicLink())).toString();
         String size= String.valueOf(attr.size() / 1000); 

@@ -25,7 +25,7 @@ public class FTP {
             } break;
             case "TSF" :
             {
-                ClientA.transfer.initNetwork(ClientA.serverIp);
+                //ClientA.transfer.initNetwork(ClientA.serverIp);
             } break;
             case "UPL" :
             {

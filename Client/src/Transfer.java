@@ -21,8 +21,8 @@ public class Transfer {
             in.close();
             in = null;
             System.gc();
-            socket.shutdownOutput();
-            socket.close();
+            // socket.shutdownOutput();
+            // socket.close();
         }
     }
     

@@ -52,7 +52,7 @@ public static int transferPort	= 7887; //  7887    // 8887
             }
         });
         Thread.sleep(2000);
-        setUpNetworking(serverIp);
+        //setUpNetworking(serverIp);
     }
 
     public void setUpNetworking(String ip) throws UnknownHostException, IOException, Exception {

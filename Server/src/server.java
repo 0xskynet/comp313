@@ -44,7 +44,7 @@ public class server {
             @Override
             public void run() {
                 gui = new NewJFrame();
-                gui.setVisible(true);
+                gui.setVisible(true); 
             }
         });
         
@@ -58,6 +58,7 @@ public class server {
         });
 
         Thread.sleep(2000);
+        
        setUpNetworking();
     }
 
@@ -87,12 +88,18 @@ public class server {
                         }
 	    }
 	}.start();
-
-
         
-       transfer = new Transfer();
- 
-
+        new Thread() {
+            @Override
+	    public void run() {
+                        try {
+                            transfer = new Transfer();
+                        } catch (Exception ex) {
+                            System.out.println(ex);
+                        }
+	    }
+	}.start();
+       
 
     }
     public static void send(String s) throws IOException {

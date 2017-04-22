@@ -7,7 +7,7 @@ public class Transfer {
     Socket socket;
     boolean isTransferring = false ;
     Transfer() throws IOException{
-        //initNetwork();
+        initNetwork();
     }
     public  void sendFile(String sfileName) throws IOException{
         try{
@@ -21,8 +21,8 @@ public class Transfer {
             in.close();
             in = null;
             System.gc();
-            socket.shutdownOutput();
-            socket.close();
+            // socket.shutdownOutput();
+            //socket.close();
         }
     }
 
@@ -45,14 +45,13 @@ public class Transfer {
         new Thread() {
             @Override
 	    public void run() {
-                        try {
-
-                            ServerSocket ss = new ServerSocket(server.transferPort);
-                            socket = ss.accept();       
-                            System.out.println("Transfer Connection Established");
-                        } catch (Exception ex) {
-                            System.out.println(ex);
-                        }
+                try {
+                    ServerSocket ss = new ServerSocket(server.transferPort);
+                    socket = ss.accept();
+                    System.out.println("Transfer accepted");
+                } catch (Exception ex) {
+                    System.out.println(ex);
+                }
 	    }
 	}.start();
 
